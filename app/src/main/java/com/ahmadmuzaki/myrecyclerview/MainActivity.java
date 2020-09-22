@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ahmadmuzaki.myrecyclerview.adapter.CardViewHeroAdapter;
 import com.ahmadmuzaki.myrecyclerview.adapter.GridHeroAdapter;
 import com.ahmadmuzaki.myrecyclerview.adapter.ListHeroAdapter;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvHeroes;
     private ArrayList<Hero> list = new ArrayList<>();
+    private String title = "Mode List";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         list.addAll(HeroesData.getListData());
         showRecyclerList();
+        setActionBarTitle(title);
     }
 
     private void showRecyclerList() {
@@ -41,6 +44,19 @@ public class MainActivity extends AppCompatActivity {
         rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
         GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
         rvHeroes.setAdapter(gridHeroAdapter);
+    }
+
+    private void showRecycleCardView(){
+        rvHeroes.setLayoutManager(new LinearLayoutManager(this));
+        CardViewHeroAdapter cardViewHeroAdapter = new CardViewHeroAdapter(list);
+        rvHeroes.setAdapter(cardViewHeroAdapter);
+    }
+
+    //Digunakan untuk menganti Title aplikasi saat berganti mode
+    private void setActionBarTitle(String title){
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(title);
+        }
     }
 
     @Override
@@ -59,12 +75,17 @@ public class MainActivity extends AppCompatActivity {
         switch (selectedMode) {
             case R.id.action_list:
                 showRecyclerList();
+                title = "Mode List";
                 break;
             case R.id.action_grid:
                 showRecyclerGrid();
+                title = "Mode Grid";
                 break;
             case R.id.action_cardview:
+                title = "Mode CardView";
+                showRecycleCardView();
                 break;
         }
+        setActionBarTitle(title);
     }
 }
