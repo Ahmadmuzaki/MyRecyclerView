@@ -1,5 +1,6 @@
 package com.ahmadmuzaki.myrecyclerview.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ahmadmuzaki.myrecyclerview.Hero;
+import com.ahmadmuzaki.myrecyclerview.MainActivity;
 import com.ahmadmuzaki.myrecyclerview.R;
+import com.ahmadmuzaki.myrecyclerview.halamandetail.AhmadYaniActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -20,6 +23,8 @@ import java.util.ArrayList;
 
 public class CardViewHeroAdapter extends RecyclerView.Adapter<CardViewHeroAdapter.CardViewViewHolder> {
     private ArrayList<Hero> listHero;
+    private MainActivity mainActivity;
+    private Hero hero;
 
     public CardViewHeroAdapter(ArrayList<Hero> list) {
         this.listHero = list;
@@ -35,7 +40,7 @@ public class CardViewHeroAdapter extends RecyclerView.Adapter<CardViewHeroAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
-        Hero hero = listHero.get(position);
+        final Hero hero = listHero.get(position);
 
         Glide.with(holder.itemView.getContext())
                 .load(hero.getPhoto())
@@ -66,7 +71,15 @@ public class CardViewHeroAdapter extends RecyclerView.Adapter<CardViewHeroAdapte
             public void onClick(View view) {
                 Toast.makeText(holder.itemView.getContext(), "Kamu Memilih " +
                         listHero.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(holder.itemView.getContext(), AhmadYaniActivity.class);
+                holder.itemView.getContext().startActivity(intent);
             }
+//            for (int i = 0; i < 10; i++) {
+//                if (holder.getAdapterPosition() == i) {
+//                    Toast.makeText(holder.itemView.getContext(), "Kamu Memilih " +
+//                            listHero.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
         });
 
     }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.ahmadmuzaki.myrecyclerview.adapter.CardViewHeroAdapter;
 import com.ahmadmuzaki.myrecyclerview.adapter.GridHeroAdapter;
 import com.ahmadmuzaki.myrecyclerview.adapter.ListHeroAdapter;
+import com.ahmadmuzaki.myrecyclerview.halamandetail.AhmadDahlanActivity;
+import com.ahmadmuzaki.myrecyclerview.halamandetail.AhmadYaniActivity;
 
 import java.util.ArrayList;
 
@@ -105,6 +108,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSelectedHero(Hero hero){
-        Toast.makeText(this, "Kamu Memilih " +hero.getName(), Toast.LENGTH_SHORT).show();
+        if (hero.getName() == "Ahmad Yani"){
+            Toast.makeText(this, "Kamu Memilih " +hero.getName(), Toast.LENGTH_SHORT).show();
+            Intent intentAhmadYani = new Intent(MainActivity.this, AhmadYaniActivity.class);
+            startActivity(intentAhmadYani);
+        }else if (hero.getName() == "Ahmad Dahlan"){
+            Toast.makeText(this, "Kamu Memilih " +hero.getName(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, AhmadDahlanActivity.class);
+            startActivity(intent);
+        }else if (hero.getName() == "Sutomo"){
+            Toast.makeText(this, "Kamu Memilih " +hero.getName(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, AhmadDahlanActivity.class);
+            startActivity(intent);
+        }
     }
 }
