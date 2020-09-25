@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.ahmadmuzaki.myrecyclerview.MainActivity;
 import com.ahmadmuzaki.myrecyclerview.R;
 
 public class AhmadYaniActivity extends AppCompatActivity {
-    private MainActivity mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

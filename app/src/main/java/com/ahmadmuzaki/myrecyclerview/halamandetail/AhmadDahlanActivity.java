@@ -12,5 +12,9 @@ public class AhmadDahlanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ahmad_dahlan);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Ahmad Dahlan");
+        }
     }
 }
